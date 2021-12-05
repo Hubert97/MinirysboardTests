@@ -26,7 +26,7 @@ int main() {
   
   for (uint8_t i = 0; i< 22; ++i)
   {
-    printf("Rejestr: %2d Ma wartosc: %4d \n",i, com.get_register(i));
+    printf("Reg: %2d Val: %4d \n",i, com.get_register(i));
   }
 
   return 0;

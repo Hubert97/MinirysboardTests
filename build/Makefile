@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named IO_test
+
+# Build rule for target.
+IO_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IO_test
+.PHONY : IO_test
+
+# fast build rule for target.
+IO_test/fast:
+	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/build
+.PHONY : IO_test/fast
+
+#=============================================================================
 # Target rules for targets named UartServer
 
 # Build rule for target.
@@ -135,6 +148,33 @@ Latency_test: cmake_check_build_system
 Latency_test/fast:
 	$(MAKE) -f CMakeFiles/Latency_test.dir/build.make CMakeFiles/Latency_test.dir/build
 .PHONY : Latency_test/fast
+
+IO_Test.o: IO_Test.cpp.o
+
+.PHONY : IO_Test.o
+
+# target to build an object file
+IO_Test.cpp.o:
+	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/IO_Test.cpp.o
+.PHONY : IO_Test.cpp.o
+
+IO_Test.i: IO_Test.cpp.i
+
+.PHONY : IO_Test.i
+
+# target to preprocess a source file
+IO_Test.cpp.i:
+	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/IO_Test.cpp.i
+.PHONY : IO_Test.cpp.i
+
+IO_Test.s: IO_Test.cpp.s
+
+.PHONY : IO_Test.s
+
+# target to generate assembly for a file
+IO_Test.cpp.s:
+	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/IO_Test.cpp.s
+.PHONY : IO_Test.cpp.s
 
 Latency_test.o: Latency_test.cpp.o
 
@@ -197,9 +237,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... IO_test"
 	@echo "... UartServer"
 	@echo "... edit_cache"
 	@echo "... Latency_test"
+	@echo "... IO_Test.o"
+	@echo "... IO_Test.i"
+	@echo "... IO_Test.s"
 	@echo "... Latency_test.o"
 	@echo "... Latency_test.i"
 	@echo "... Latency_test.s"

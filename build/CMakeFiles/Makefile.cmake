@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/IO_test.dir/DependInfo.cmake"
   "CMakeFiles/UartServer.dir/DependInfo.cmake"
   "CMakeFiles/Latency_test.dir/DependInfo.cmake"
   )
