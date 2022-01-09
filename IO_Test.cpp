@@ -3,7 +3,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <termios.h>
+
 #include <unistd.h>
 
 #include "RysCom.h"
@@ -27,12 +27,12 @@ int main() {
     {
         printf("Reg: %2d Val: %5d \n",i, com.get_register(i));
     }
-
+    com.ping();
     if(com.get_register(0x06) == 0x00)
     {
         printf("Enabling Stepper Motors... ");
         com.set_register(0x03,0x10);
-        usleep(100000);
+        usleep(500000);
         if( com.get_register(0x06) == 0x02 )
         {
             printf("Enabled\n");
@@ -45,7 +45,7 @@ int main() {
 
         printf("Enabling TOFs... ");
         com.set_register(0x03,0x80);
-        usleep(100000);
+        usleep(500000);
         if( com.get_register(0x06) == 0x03 )
         {
             printf("Enabled\n");

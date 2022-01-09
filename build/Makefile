@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pi/documents/comm_test/testC/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named IO_test
+# Target rules for targets named Throughput_test
 
 # Build rule for target.
-IO_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 IO_test
-.PHONY : IO_test
+Throughput_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Throughput_test
+.PHONY : Throughput_test
 
 # fast build rule for target.
-IO_test/fast:
-	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/build
-.PHONY : IO_test/fast
+Throughput_test/fast:
+	$(MAKE) -f CMakeFiles/Throughput_test.dir/build.make CMakeFiles/Throughput_test.dir/build
+.PHONY : Throughput_test/fast
 
 #=============================================================================
 # Target rules for targets named UartServer
@@ -148,6 +148,32 @@ Latency_test: cmake_check_build_system
 Latency_test/fast:
 	$(MAKE) -f CMakeFiles/Latency_test.dir/build.make CMakeFiles/Latency_test.dir/build
 .PHONY : Latency_test/fast
+
+#=============================================================================
+# Target rules for targets named Measure_temp
+
+# Build rule for target.
+Measure_temp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Measure_temp
+.PHONY : Measure_temp
+
+# fast build rule for target.
+Measure_temp/fast:
+	$(MAKE) -f CMakeFiles/Measure_temp.dir/build.make CMakeFiles/Measure_temp.dir/build
+.PHONY : Measure_temp/fast
+
+#=============================================================================
+# Target rules for targets named IO_test
+
+# Build rule for target.
+IO_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IO_test
+.PHONY : IO_test
+
+# fast build rule for target.
+IO_test/fast:
+	$(MAKE) -f CMakeFiles/IO_test.dir/build.make CMakeFiles/IO_test.dir/build
+.PHONY : IO_test/fast
 
 IO_Test.o: IO_Test.cpp.o
 
@@ -203,6 +229,60 @@ Latency_test.cpp.s:
 	$(MAKE) -f CMakeFiles/Latency_test.dir/build.make CMakeFiles/Latency_test.dir/Latency_test.cpp.s
 .PHONY : Latency_test.cpp.s
 
+Measure_temp.o: Measure_temp.cpp.o
+
+.PHONY : Measure_temp.o
+
+# target to build an object file
+Measure_temp.cpp.o:
+	$(MAKE) -f CMakeFiles/Measure_temp.dir/build.make CMakeFiles/Measure_temp.dir/Measure_temp.cpp.o
+.PHONY : Measure_temp.cpp.o
+
+Measure_temp.i: Measure_temp.cpp.i
+
+.PHONY : Measure_temp.i
+
+# target to preprocess a source file
+Measure_temp.cpp.i:
+	$(MAKE) -f CMakeFiles/Measure_temp.dir/build.make CMakeFiles/Measure_temp.dir/Measure_temp.cpp.i
+.PHONY : Measure_temp.cpp.i
+
+Measure_temp.s: Measure_temp.cpp.s
+
+.PHONY : Measure_temp.s
+
+# target to generate assembly for a file
+Measure_temp.cpp.s:
+	$(MAKE) -f CMakeFiles/Measure_temp.dir/build.make CMakeFiles/Measure_temp.dir/Measure_temp.cpp.s
+.PHONY : Measure_temp.cpp.s
+
+Troughput_test.o: Troughput_test.cpp.o
+
+.PHONY : Troughput_test.o
+
+# target to build an object file
+Troughput_test.cpp.o:
+	$(MAKE) -f CMakeFiles/Throughput_test.dir/build.make CMakeFiles/Throughput_test.dir/Troughput_test.cpp.o
+.PHONY : Troughput_test.cpp.o
+
+Troughput_test.i: Troughput_test.cpp.i
+
+.PHONY : Troughput_test.i
+
+# target to preprocess a source file
+Troughput_test.cpp.i:
+	$(MAKE) -f CMakeFiles/Throughput_test.dir/build.make CMakeFiles/Throughput_test.dir/Troughput_test.cpp.i
+.PHONY : Troughput_test.cpp.i
+
+Troughput_test.s: Troughput_test.cpp.s
+
+.PHONY : Troughput_test.s
+
+# target to generate assembly for a file
+Troughput_test.cpp.s:
+	$(MAKE) -f CMakeFiles/Throughput_test.dir/build.make CMakeFiles/Throughput_test.dir/Troughput_test.cpp.s
+.PHONY : Troughput_test.cpp.s
+
 Uart_test.o: Uart_test.cpp.o
 
 .PHONY : Uart_test.o
@@ -236,17 +316,25 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Throughput_test"
+	@echo "... UartServer"
+	@echo "... Latency_test"
+	@echo "... Measure_temp"
+	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... IO_test"
-	@echo "... UartServer"
-	@echo "... edit_cache"
-	@echo "... Latency_test"
 	@echo "... IO_Test.o"
 	@echo "... IO_Test.i"
 	@echo "... IO_Test.s"
 	@echo "... Latency_test.o"
 	@echo "... Latency_test.i"
 	@echo "... Latency_test.s"
+	@echo "... Measure_temp.o"
+	@echo "... Measure_temp.i"
+	@echo "... Measure_temp.s"
+	@echo "... Troughput_test.o"
+	@echo "... Troughput_test.i"
+	@echo "... Troughput_test.s"
 	@echo "... Uart_test.o"
 	@echo "... Uart_test.i"
 	@echo "... Uart_test.s"

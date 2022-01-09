@@ -1,5 +1,7 @@
+/home/pi/documents/comm_test/testC/build/CMakeFiles/Throughput_test.dir
+/home/pi/documents/comm_test/testC/build/CMakeFiles/UartServer.dir
+/home/pi/documents/comm_test/testC/build/CMakeFiles/Latency_test.dir
+/home/pi/documents/comm_test/testC/build/CMakeFiles/Measure_temp.dir
+/home/pi/documents/comm_test/testC/build/CMakeFiles/edit_cache.dir
 /home/pi/documents/comm_test/testC/build/CMakeFiles/rebuild_cache.dir
 /home/pi/documents/comm_test/testC/build/CMakeFiles/IO_test.dir
-/home/pi/documents/comm_test/testC/build/CMakeFiles/UartServer.dir
-/home/pi/documents/comm_test/testC/build/CMakeFiles/edit_cache.dir
-/home/pi/documents/comm_test/testC/build/CMakeFiles/Latency_test.dir

@@ -20,8 +20,6 @@ union COM_Data{
 	uint16_t buf16;
 };
 
-
-
 class RysCom {
 public:
 RysCom(){
@@ -62,13 +60,14 @@ tcsetattr(serial_port, TCSANOW, &tty);
 uint8_t ping()
 {
 
+tty.c_cc[VMIN] = 1;  
+tcsetattr(serial_port, TCSANOW, &tty);
 unsigned char msg[1];
 msg[0] = 0x03;
 
 write(serial_port, msg , 1);
 char read_buf [1];  
 memset(&read_buf, '\0', sizeof(read_buf));
-
 int num_bytes = read(serial_port, &read_buf, 1);
     
     if (num_bytes < 0) {
@@ -79,8 +78,15 @@ int num_bytes = read(serial_port, &read_buf, 1);
 return read_buf[0];
 }
 
+
+/** 
+ *  * Blocking function - blocks until reg is set.
+ *  
+ */
 uint8_t set_register(uint8_t reg, uint16_t data)
 {
+    tty.c_cc[VMIN] = 1;  
+    tcsetattr(serial_port, TCSANOW, &tty);
     //send data
     union COM_Data translator;
     translator.buf16 = data;        
@@ -99,9 +105,13 @@ uint8_t set_register(uint8_t reg, uint16_t data)
 
 }
 
-
+/** 
+ *  * Blocking function - blocks until reg is read.
+ */
 uint16_t get_register(uint8_t reg)
 {
+    tty.c_cc[VMIN] = 4;  
+    tcsetattr(serial_port, TCSANOW, &tty);
     //send data
     union COM_Data translator;
     uint8_t msg[3];
@@ -116,7 +126,8 @@ uint16_t get_register(uint8_t reg)
     read_buf [3] = 0x00; 
 
     //usleep(10000); //for 9600
-    usleep(600); //for B576000
+    //usleep(500); //for B576000
+  //  usleep(1000); //for B576000
     int num_bytes = read(serial_port, &read_buf, 4);
         if (num_bytes < 0) {
         printf("Error reading: %s", strerror(errno));

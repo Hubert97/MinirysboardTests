@@ -14,6 +14,8 @@ include_directories(./inc)
 #set(SOURCE_FILES Latency_test.cpp)
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(UartServer Uart_test.cpp)
+add_executable(Throughput_test  Troughput_test.cpp)
 add_executable(Latency_test  Latency_test.cpp)
 add_executable(IO_test  IO_Test.cpp)
+add_executable(Measure_temp  Measure_temp.cpp)
 
